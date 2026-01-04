@@ -28,7 +28,10 @@ export default function Header() {
           <Link href="/" className="hover:text-blue-500 transition-colors">
             Tentang Kami
           </Link>
-          <Link href="/" className="hover:text-blue-500 transition-colors">
+          <Link
+            href="/layanan"
+            className="hover:text-blue-500 transition-colors"
+          >
             Pelayanan
           </Link>
           <Link href="/blog" className="hover:text-blue-500 transition-colors">

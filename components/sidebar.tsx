@@ -1,10 +1,7 @@
-"use client";
-
-import { useState } from "react";
-import { SignOutButton, useUser } from "@clerk/nextjs";
 import { motion } from "framer-motion";
 import { Menu, X, LayoutDashboard, FileText, Mail, LogOut } from "lucide-react";
 import Link from "next/link";
+import { useState } from "react";
 
 export default function AdminLayout({
   children,
@@ -12,7 +9,6 @@ export default function AdminLayout({
   children: React.ReactNode;
 }) {
   const [open, setOpen] = useState(false);
-  const { user } = useUser();
 
   return (
     <div className="flex min-h-screen bg-gray-50">
@@ -35,7 +31,7 @@ export default function AdminLayout({
 
           {/* User Profile */}
           <div className="p-4 border-b border-blue-600">
-            <p className="font-semibold">{user?.fullName || "Administrator"}</p>
+            <p className="font-semibold">{"Administrator"}</p>
             <p className="text-sm text-blue-200">Admin</p>
           </div>
 
@@ -58,13 +54,7 @@ export default function AdminLayout({
           </nav>
 
           {/* Logout */}
-          <div className="p-4 border-t border-blue-600">
-            <SignOutButton>
-              <button className="w-full flex items-center justify-center gap-2 bg-red-600 hover:bg-red-700 px-4 py-2 rounded-lg text-sm">
-                <LogOut className="w-4 h-4" /> Logout
-              </button>
-            </SignOutButton>
-          </div>
+          <div className="p-4 border-t border-blue-600"></div>
         </motion.aside>
       )}
 

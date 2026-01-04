@@ -1,0 +1,63 @@
+/* styles/tiptap.css */
+.tiptap {
+  @apply prose prose-sm max-w-none;
+
+  /* Override Tailwind prose untuk editor */
+  font-family: inherit;
+  line-height: 1.6;
+}
+
+.tiptap :first-child {
+  margin-top: 0;
+}
+
+.tiptap ul,
+.tiptap ol {
+  padding-left: 1.25rem;
+  margin: 1.25rem 0;
+}
+
+.tiptap h1,
+.tiptap h2,
+.tiptap h3,
+.tiptap h4,
+.tiptap h5,
+.tiptap h6 {
+  line-height: 1.2;
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.tiptap h1 {
+  font-size: 1.5rem;
+}
+
+.tiptap h2 {
+  font-size: 1.25rem;
+}
+
+.tiptap h3 {
+  font-size: 1.125rem;
+}
+
+.tiptap code {
+  @apply bg-gray-100 text-gray-800 px-1 rounded;
+  font-size: 0.875em;
+}
+
+.tiptap pre {
+  @apply bg-gray-800 text-white p-4 rounded-lg my-4 overflow-x-auto;
+  font-family: monospace;
+}
+
+.tiptap pre code {
+  @apply bg-transparent text-inherit p-0;
+}
+
+.tiptap blockquote {
+  @apply border-l-4 border-gray-300 pl-4 italic text-gray-600 my-4;
+}
+
+.tiptap hr {
+  @apply my-6 border-t border-gray-300;
+}
