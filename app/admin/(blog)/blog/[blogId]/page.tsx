@@ -1,5 +1,5 @@
-const Page = () => {
-  return <div>Blog Detail Page</div>;
-};
+import { BlogListView } from "@/features/blogs/read-view";
 
-export default Page;
+export default function BlogPage() {
+  return <BlogListView />;
+}

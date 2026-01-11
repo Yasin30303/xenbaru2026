@@ -1,5 +1,4 @@
 "use client";
-import { VideoText } from "@/components/magicui/video-text";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import {
@@ -16,6 +15,7 @@ import { ProjectGallery } from "@/app/project-gallery";
 import { ModernServicesCarousel } from "@/components/modern-services-carousel";
 import { MotionDiv } from "@/components/motion-div";
 import { ScrollAnimatedSvg } from "@/components/scroll-animated-svg";
+import { AuroraText } from "@/components/ui/aurora-text";
 
 export default function HomeContent() {
   const [showVisiMisi, setShowVisiMisi] = useState(false);
@@ -27,7 +27,7 @@ export default function HomeContent() {
         {/* Latar Belakang Warna Diagonal */}
         <div className="absolute inset-0 flex">
           <div className="hidden md:block w-1/2" /> {/* Kosong di desktop */}
-          <div className="w-full md:w-1/2 flex -skew-x-[25deg] md:translate-x-24">
+          <div className="w-full md:w-1/2 flex -skew-x-25 md:translate-x-24">
             <div className="w-1/3 bg-[#F4B400]" />
             <div className="w-1/3 bg-[#4285F4]" />
             <div className="w-1/3 bg-[#DB4437]" />
@@ -38,25 +38,21 @@ export default function HomeContent() {
         <main className="relative z-10 flex flex-col md:grid md:grid-cols-2 items-center min-h-[80vh] px-4 sm:px-6 lg:px-12 gap-y-8">
           {/* Kolom Kiri */}
           <div className="flex flex-col justify-center items-center md:items-start text-center md:text-left space-y-2 relative z-20">
-            <VideoText
-              src="https://cdn.magicui.design/ocean-small.webm"
-              className="block text-5xl sm:text-6xl md:text-8xl font-extrabold leading-tight"
-            >
-              XENA
-            </VideoText>
-            <VideoText
-              src="https://cdn.magicui.design/ocean-small.webm"
-              className="block text-5xl sm:text-6xl md:text-8xl font-extrabold leading-tight"
-            >
-              TEKNO
-            </VideoText>
+            <h1 className="text-4xl md:text-5xl font-bold leading-tight mb-4">
+              Solusi Digital untuk{" "}
+              <AuroraText speed={2}>Bisnis Modern</AuroraText>
+            </h1>
+            <p className="text-gray-600 text-lg mb-6">
+              Xena Tekno membantu bisnis Anda berkembang melalui pengembangan
+              website, aplikasi web, dan sistem digital yang efisien dan aman.
+            </p>
           </div>
 
           {/* Kolom Kanan */}
           <div className="flex items-center justify-center text-center md:text-right">
-            <h1 className="text-black text-2xl sm:text-3xl md:text-5xl font-extrabold leading-snug tracking-wide">
+            {/* <h1 className="text-black text-2xl sm:text-3xl md:text-5xl font-extrabold leading-snug tracking-wide">
               Menghadirkan Solusi Lewat Teknologi
-            </h1>
+            </h1> */}
           </div>
         </main>
       </div>
@@ -111,7 +107,7 @@ export default function HomeContent() {
             </p>
           </MotionDiv>
           <MotionDiv delay={0.5}>
-            <ScrollAnimatedSvg className="flex-shrink-0 max-w-full" />
+            <ScrollAnimatedSvg className="shrink-0 max-w-full" />
           </MotionDiv>
         </div>
       </section>

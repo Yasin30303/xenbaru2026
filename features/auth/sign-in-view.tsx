@@ -17,15 +17,18 @@ import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
+import { Loader2Icon } from "lucide-react";
 
 const signInSchema = z.object({
-  email: z.string().email("Email Tidak valid mas"),
-  password: z.string().min(6, "Password kudu 6 karakter mas"),
+  email: z.string().email("Email Tidak Valid"),
+  password: z.string().min(6, "Password harus 6 karakter atau lebih"),
 });
 
 export type SignInFormData = z.infer<typeof signInSchema>;
 
 const SignInPage = () => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const router = useRouter();
 
   const form = useForm<SignInFormData>({
@@ -37,6 +40,7 @@ const SignInPage = () => {
   });
 
   const handleSubmit = (values: SignInFormData) => {
+    setIsSubmitting(true);
     authClient.signIn.email(
       {
         email: values.email,
@@ -44,6 +48,7 @@ const SignInPage = () => {
       },
       {
         onSuccess: (session) => {
+          setIsSubmitting(false);
           toast.success("Berhasil masuk, selamat datang kembali!");
           router.push("/admin/blog");
         },
@@ -67,7 +72,7 @@ const SignInPage = () => {
               <FormItem>
                 <Label>Masukan Username</Label>
                 <FormControl>
-                  <Input placeholder="nassemuchi" {...field} />
+                  <Input placeholder="email" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -80,19 +85,23 @@ const SignInPage = () => {
               <FormItem>
                 <Label>Masukan Password</Label>
                 <FormControl>
-                  <Input type="password" placeholder="nassemuchi" {...field} />
+                  <Input type="password" placeholder="password" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
             )}
           />
           <Button type="submit" className="w-full mt-4">
-            Sign In
+            {isSubmitting ? (
+              <Loader2Icon className="animate-spin" />
+            ) : (
+              "Sign In"
+            )}
           </Button>
         </form>
       </Form>
       <p className="mt-4 text-sm text-gray-600">
-        Belom punya akun?{" "}
+        Belum punya akun?{" "}
         <Link href="/admin/sign-up" className="text-blue-600 hover:underline">
           Masuk di sini
         </Link>

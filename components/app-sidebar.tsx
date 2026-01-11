@@ -15,7 +15,7 @@ import {
 import { Button } from "./ui/button";
 import { authClient } from "@/lib/auth-client";
 import { useRouter } from "next/navigation";
-import { use } from "react";
+// import { use } from "react";
 
 // Menu items.
 const items = [
@@ -29,13 +29,14 @@ const items = [
 export function AppSidebar() {
   const router = useRouter();
   const handlelogout = async () => {
-    await authClient.signOut({
-      fetchOptions: {
-        onSuccess: () => {
-          router.push("/admin/sign-in"); // redirect to login page
-        },
-      },
-    });
+    try {
+      await authClient.signOut();
+      router.push("/admin/sign-in");
+      router.refresh();
+    } catch (error) {
+      console.error("Logout failed", error);
+      alert("Logout failed. Please try again.");
+    }
   };
   return (
     <Sidebar>

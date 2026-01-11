@@ -28,7 +28,7 @@ export type SignUpFormData = z.infer<typeof signUpSchema>;
 const SignUpPage = () => {
   const form = useForm<SignUpFormData>({
     defaultValues: {
-      fullname: "John Doe",
+      fullname: "",
       email: "",
       password: "",
     },
@@ -64,9 +64,9 @@ const SignUpPage = () => {
             control={form.control}
             render={({ field }) => (
               <FormItem>
-                <Label>Masukan FUll name</Label>
+                <Label>Masukkan Nama Lengkap</Label>
                 <FormControl>
-                  <Input placeholder="Muhammad Nuaina yasin" {...field} />
+                  <Input placeholder="Nama Lengkap" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -77,9 +77,9 @@ const SignUpPage = () => {
             control={form.control}
             render={({ field }) => (
               <FormItem>
-                <Label>Masukan Username</Label>
+                <Label>Masukan Email</Label>
                 <FormControl>
-                  <Input placeholder="nassemuchi" {...field} />
+                  <Input placeholder="Email" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -92,7 +92,7 @@ const SignUpPage = () => {
               <FormItem>
                 <Label>Masukan Password</Label>
                 <FormControl>
-                  <Input type="password" placeholder="nassemuchi" {...field} />
+                  <Input type="password" placeholder="Password" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
